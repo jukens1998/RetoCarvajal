@@ -1,0 +1,73 @@
+$(document).ready(function () {
+
+    var rows;
+    var columns;
+
+    /*Open the main Modal */
+    $('#exampleModal').modal('toggle');
+
+    /*Save the row ad columns values */
+    $("#SaveValues").on("click", function () {
+        /*Rows value*/
+        rows = $("#rowsValue").val();
+
+        /*columns value*/
+        columns = $("#columnsValue").val();
+
+        /*Call the CreateTable function */
+        CreateTable(rows, columns);
+
+        /*Close the modal */
+        $('#exampleModal').modal('toggle');
+    });
+
+
+    $().on('click', "#table", function () {
+        alert($(this).attr('id'));
+    });
+
+
+
+    $("#cell1").on("click", function () {
+        alert("pepe");
+    });
+
+
+});
+function CreateTable(rowsValue, columnsValue) {
+    var rowsHtml;
+    var columnsHtml;
+
+    /*Concat the amount of rows */
+    for (let rIndex = 0; rIndex < rowsValue; rIndex++) {
+
+
+
+        /*Concat the amount of columns */
+        for (let index = 0; index < columnsValue; index++) {
+            columnsHtml += "<td id=" + rIndex + index + "></td>";
+        }
+        rowsHtml += " <tr>" + columnsHtml + "</tr>";
+        columnsHtml = "";
+    }
+
+
+    $("#table").append(rowsHtml);
+    alert(rowsValue);
+    alert(columnsValue);
+}
+function ColorSelector(params) {
+
+}
+
+/* <tr id="row">
+   <th scope="col" id=""></th>
+  <th scope="col" id=""></th>
+  </tr>
+
+  <tr id="column">
+<th scope="col" id=""></th>
+ </tr>
+
+
+  */
